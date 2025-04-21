@@ -45,7 +45,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:20, minZoom:11
-        }).fitBounds([[50.71019529214093,7.067061474993247],[50.7325898500092,7.114449965261897]]);
+        }).fitBounds([[50.709211719699645,7.06245767556221],[50.74330827654986,7.13847932713302]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -110,19 +110,23 @@
         function pop_Eis_Cafe_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Name</strong><br />' + (feature.properties['Name'] !== null ? autolinker.link(String(feature.properties['Name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(feature.properties['Adresse'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(String(feature.properties['Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Bewertung</strong><br />' + (feature.properties['Bewertung'] !== null ? autolinker.link(feature.properties['Bewertung'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Bewertung</strong><br />' + (feature.properties['Bewertung'] !== null ? autolinker.link(String(feature.properties['Bewertung']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Öffnung</strong><br />' + (feature.properties['Öffnung'] !== null ? autolinker.link(feature.properties['Öffnung'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Öffnung</strong><br />' + (feature.properties['Öffnung'] !== null ? autolinker.link(String(feature.properties['Öffnung']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>Schließun</strong><br />' + (feature.properties['Schließun'] !== null ? autolinker.link(feature.properties['Schließun'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Schließun</strong><br />' + (feature.properties['Schließun'] !== null ? autolinker.link(String(feature.properties['Schließun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Ruhetag(e)</th>\
+                        <td>' + (feature.properties['Ruhetag(e)'] !== null ? autolinker.link(String(feature.properties['Ruhetag(e)']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
